@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function createCheckDigit(membershipId) {
+  // Write the code that goes here.
+  const nbrArr = membershipId.split('');
+  let sum = nbrArr.map((n) => Number(n)).reduce((a,b) => a + b);
+  if(sum > 10){
+    sum = createCheckDigit( sum.toString() );
+  }
+  return sum;
+}
+
+console.log(createCheckDigit("55555"));
+</script>
+</body>
+</html>

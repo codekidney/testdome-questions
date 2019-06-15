@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function formatDate(userDate) {
+    const dateArr = userDate.split('/');
+    return [dateArr[2], ("0"+dateArr[0]).slice(-2), ("0"+dateArr[1]).slice(-2)].join('');
+    // format from M/D/YYYY to YYYYMMDD
+    }
+
+    console.log(formatDate("12/31/2014"));
+</script>
+</body>
+</html>
