@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+function newMessage(topicName) {
+  if(typeof topicName === 'string'){
+    $('p').each(function(){
+        if( $(this).data('topic-name') === topicName){
+            $(this).css('background-color', 'red');
+        }
+    })
+    /* alternative JS (passed test) */
+    /*
+    const pTagElem = document.getElementsByTagName('p');
+    Array.prototype.forEach.call(pTagElem,function(elem){
+      const topicNameElem = elem.attributes.getNamedItem('data-topic-name').value;
+      if( topicNameElem !== 'undefined'){
+          if(topicNameElem === topicName){
+              elem.style.backgroundColor = 'red';
+          }
+      }
+    });
+    */
+  }
+}
+
+
+document.body.innerHTML = `<div>
+  <p data-topic-name="discussion">General discussion</p>
+  <p data-topic-name="bugs">Bugs</p>
+  <p data-topic-name="animals">Animals</p>
+  <p style="background-color: red">Animals</p>
+</div>`;
+newMessage("discussion");
+console.log(document.body.innerHTML);
+</script>
+</body>
+</html>

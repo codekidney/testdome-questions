@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
+<script>
+function setup() {
+  $('ol li button').on('click',function(){
+    const up = ($(this).text() === 'Up!') ? true : false;
+    const jElem = $(this).parent();
+    const jPrevElem = jElem.prev();
+    const jNextElem = jElem.next();
+    if(up){
+        console.log('Move Up');
+        jElem.insertBefore(jPrevElem);
+    } else {
+        console.log('Move Down');
+        jNextElem.insertBefore(jElem);
+    }
+  });
+}
+
+document.body.innerHTML = `<ol>
+  <li><button>Up!</button>Taco<button>Down!</button></li>
+  <li><button>Up!</button>Pizza<button>Down!</button></li>
+  <li><button>Up!</button>Eggs<button>Down!</button></li>
+</ol>`;
+
+setup();
+$("button").get(2).click();
+
+console.log(document.body.innerHTML);
+</script>
+</body>
+</html>
